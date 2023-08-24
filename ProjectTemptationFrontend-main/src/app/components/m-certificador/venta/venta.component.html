@@ -36,11 +36,7 @@
           <button
             (click)="eliminarVenta(venta.idVenta)">Eliminar</button>
         </td>
-        <td>
-          <button class="button"
-            (click)="editarVenta(venta.idVenta); modalEditarCategoria.style.display = 'block'">Crear
-            Editar</button>
-        </td>
+
       </tr>
     </tbody>
   </table>
@@ -104,63 +100,3 @@
       </div>
     </div>
   </div>
-
-  <div #modalEditarCategoria class="modal" tabindex="-1" role="dialog"
-    style="display: none;">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Crear Nueva Categoría</h5>
-          <button type="button" class="close"
-            (click)="modalEditarCategoria.style.display = 'none'">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="row g-3 " (ngSubmit)="editarVenta(id)">
-            <div class="form-group">
-              <label for="descripcion">Idcliente</label>
-              <input type="text" class="form-control" id="descripcion"
-                name="descripcion" [(ngModel)]="nuevaVenta.idCliente">
-            </div>
-            <div class="form-group">
-              <label for="descripcion">TotalProducto</label>
-              <input type="text" class="form-control" id="descripcion"
-                name="descripcion" [(ngModel)]="nuevaVenta.totalProducto">
-            </div>
-            <div class="form-group">
-              <label for="descripcion">Total</label>
-              <input type="text" class="form-control" id="descripcion"
-                name="descripcion" [(ngModel)]="nuevaVenta.total">
-            </div>
-            <div class="form-group">
-              <label for="descripcion">Contacto</label>
-              <input type="text" class="form-control" id="descripcion"
-                name="descripcion" [(ngModel)]="nuevaVenta.contacto">
-            </div>
-            <div class="form-group">
-              <label for="descripcion">Localidad</label>
-              <input type="text" class="form-control" id="descripcion"
-                name="idLocalidad" [(ngModel)]="nuevaVenta.idLocalidad">
-            </div>
-            <div class="form-group">
-              <label for="descripcion">Telefono</label>
-              <input type="text" class="form-control" id="descripcion"
-                name="descripcion" [(ngModel)]="nuevaVenta.telefono">
-            </div>
-            <div class="form-group">
-              <label for="descripcion">Direccion</label>
-              <input type="text" class="form-control" id="descripcion"
-                name="descripcion" [(ngModel)]="nuevaVenta.direccion">
-            </div>
-            <!-- Agrega otros campos aquí -->
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary"
-            (click)="modalEditarCategoria.style.display = 'none'">Cancelar</button>
-          <button type="button" class="btn btn-primary"
-            (click)="crearVenta(); modalCrearCategoria.style.display = 'none'">Crear</button>
-        </div>
-      </div>
-    </div>

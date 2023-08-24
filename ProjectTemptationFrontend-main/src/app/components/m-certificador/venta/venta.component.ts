@@ -13,6 +13,7 @@ export class VentaComponent {
   nuevaVenta: IVenta; // No es necesario inicializarla aquí
   showEditModal: boolean = false;
   id: any;
+  info: any;
 
   editar: FormGroup=this.fb.group({
     idVenta: '',
@@ -50,6 +51,13 @@ export class VentaComponent {
     });
   }
 
+  getVenta(id:any){
+    this.ventaService.seleccionarVenta(id)
+    .subscribe((resp:any)=>{
+      this.info=resp;
+      this.id=id;
+    })
+  }
 
   crearVenta(): void {
     this.ventaService.createVenta(this.nuevaVenta).subscribe(
