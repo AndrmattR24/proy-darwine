@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriaComponent } from './components/m-certificador/categoria/categoria.component';

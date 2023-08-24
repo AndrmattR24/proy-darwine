@@ -23,18 +23,31 @@ export class VentaService {
 
   }
 
- 
+
   getVenta(): Observable<IVenta[]> {
     return this.http.get<IVenta[]>(`${this.apiUrl}`);
   }
   createVenta(usuario: IVenta): Observable<any> {
     return this.http.post<any>(this.apiUrl, usuario);
   }
-  
-  
+
+
   deleteVenta(id: number): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<any>(url);
   }
-  
+
+  upDate(venta: any){
+    const temp ={
+      ...venta
+    }
+    delete temp.id;
+
+    return this.http.put(`${this.apiUrl}/${venta.id}`, venta)
+  }
+
+  seleccionarVenta(id:any){
+    return this.http.get(`${this.apiUrl}/${id}`)
+  }
+
 }

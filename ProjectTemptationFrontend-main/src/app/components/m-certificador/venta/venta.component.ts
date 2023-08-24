@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { IVenta } from 'src/app/interfaces/IVentas';
 import { VentaService } from 'src/app/services/venta.service';
 
@@ -11,7 +12,19 @@ export class VentaComponent {
   ventas: IVenta[] = [];
   nuevaVenta: IVenta; // No es necesario inicializarla aquí
   showEditModal: boolean = false;
-  constructor(private ventaService: VentaService) {
+
+  editar: FormGroup=this.fb.group({
+    idCliente:'',
+    totalProducto:'',
+    total: '',
+    contacto: '',
+    idLocalidad: '',
+    telefono: '',
+    direccion: '',
+
+  })
+
+  constructor(private ventaService: VentaService, private fb: FormBuilder) {
     this.nuevaVenta = {
       idCliente: 1,
       totalProducto: 0,
@@ -74,5 +87,26 @@ export class VentaComponent {
         }
       );
     }
+  }
+
+  editarVenta(id:any){
+    if(!this.editar.valid){
+      this.editar.markAllAsTouched();
+      return
+    }
+    const ventas:any={
+      idCliente:this.editar.value.idCliente,
+    totalProducto:this.editar.value.totalProducto,
+    id:id,
+    contacto: this.editar.value.contacto,
+    idLocalidad: this.editar.value.idLocalidad,
+    telefono: this.editar.value.telefono,
+    direccion: this.editar.value.direccion,
+    }
+    this.ventaService.upDate(ventas)
+    .subscribe(resp=>{
+      console.log("actualizado",resp);
+    });
+    this.getVentas();
   }
 }
