@@ -12,9 +12,10 @@ export class VentaComponent {
   ventas: IVenta[] = [];
   nuevaVenta: IVenta; // No es necesario inicializarla aquí
   showEditModal: boolean = false;
+  id: any;
 
   editar: FormGroup=this.fb.group({
-    idCliente:'',
+    idVenta: '',
     totalProducto:'',
     total: '',
     contacto: '',
@@ -26,14 +27,14 @@ export class VentaComponent {
 
   constructor(private ventaService: VentaService, private fb: FormBuilder) {
     this.nuevaVenta = {
-      idCliente: 1,
+      idVenta: 1,
       totalProducto: 0,
       total: 0,
       contacto: '',
-      idLocalidad: 'LCX',
+      idLocalidad: 'LIM',
       telefono: '',
       direccion: '',
-      idTransaccion: '2GN74657DM958390W',
+
       fechaVenta: new Date().toISOString(),
     };
   }
@@ -53,7 +54,7 @@ export class VentaComponent {
   crearVenta(): void {
     this.ventaService.createVenta(this.nuevaVenta).subscribe(
       (respuesta) => {
-        console.log('Categoría creada exitosamente', respuesta);
+        console.log('Venta creada exitosamente', respuesta);
         this.nuevaVenta = {
           idCliente: 0,
           totalProducto: 0,
@@ -68,21 +69,21 @@ export class VentaComponent {
         this.getVentas();
       },
       (error) => {
-        console.error('Error al crear la categoría', error);
+        console.error('Error al crear la venta', error);
         this.getVentas();
       }
     );
   }
 
-  eliminarVenta(idVenta: number): void {
-    if (confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {
-      this.ventaService.deleteVenta(idVenta).subscribe(
+  eliminarVenta(idventa: any): void {
+    if (confirm('¿Estás seguro de que deseas eliminar esta venta?')) {
+      this.ventaService.deleteVenta(idventa).subscribe(
         (respuesta) => {
-          console.log('Categoría eliminada exitosamente', respuesta);
+          console.log('venta eliminada exitosamente', respuesta);
           this.getVentas();
         },
         (error) => {
-          console.error('Error al eliminar la categoría', error);
+          console.error('venta al eliminar la categoría', error);
           this.getVentas();
         }
       );

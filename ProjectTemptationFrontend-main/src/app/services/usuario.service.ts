@@ -13,27 +13,37 @@ import { IUsuario } from "../interfaces/IUsuario";
 export class UsuarioService {
 
   private apiUrl: string;
+  private apidel: string;
   private token?: string;
+  private apiPost: string;
 
 
   constructor(private http: HttpClient) {
 
-    this.apiUrl = environment.endpoint + 'api/Usuario';
+    this.apiUrl = environment.endpoint + 'api/Usuario/GetUsuario';
+    this.apidel = environment.endpoint + 'api/Usuario/DeleteUsuario';
+    this.apiPost = environment.endpoint + 'api/Usuario/PostUsuario/'
+
 
   }
 
- 
+
   getUsuario(): Observable<IUsuario[]> {
     return this.http.get<IUsuario[]>(`${this.apiUrl}`);
   }
 
   createUsuario(usuario: IUsuario): Observable<any> {
-    return this.http.post<any>(this.apiUrl, usuario);
+    return this.http.post<any>(this.apiPost, usuario);
   }
-  
-  
+
+
   deleteUsuario(id: number): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apidel}/${id}`;
     return this.http.delete<any>(url);
+  }
+
+  updateCategoria(id: number, usuario: IUsuario): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<any>(url, usuario);
   }
 }

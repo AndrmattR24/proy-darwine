@@ -37,7 +37,7 @@ export class UsuarioComponent {
   crearUsuario(): void {
     this.usuarioService.createUsuario(this.nuevoUsuario).subscribe(
       (respuesta) => {
-        console.log('Categoría creada exitosamente', respuesta);
+        console.log('Usuario creada exitosamente', respuesta);
         this.nuevoUsuario = {
           idUsuario: 0,
           nombre: '',
@@ -50,7 +50,7 @@ export class UsuarioComponent {
         this.getUsuario();
       },
       (error) => {
-        console.error('Error al crear la categoría', error);
+        console.error('Error al crear la usuario', error);
         this.getUsuario();
       }
     );

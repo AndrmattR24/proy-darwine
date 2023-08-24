@@ -39,29 +39,26 @@ export class ProductoComponent {
   crearProducto(): void {
     this.prductoService.createProducto(this.nuevoProducto).subscribe(
       (respuesta) => {
-        console.log('Categoría creada exitosamente', respuesta);
+        console.log('categoria creada exitosamente', respuesta);
         this.nuevoProducto = {
-          idProducto: 0,
           nombre: '',
           descripcion: '',
           idCategoria: 0,
           precio: 0,
-          rutaImagen: 'c//images//',
-          nombreImagen: 'FOTOPROD',
-          activo: 1,
-          fechaRegistro: new Date().toISOString(),
+          fechaRegistro: new Date().toISOString()
         };
         this.getProducto();
       },
       (error) => {
-        console.error('Error al crear la categoría', error);
+        console.error('Error al crear la categoria', error);
         this.getProducto();
+
       }
     );
   }
 
   eliminarProducto(idproducto: number): void {
-    if (confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {
+    if (confirm('¿Estás seguro de que deseas eliminar esta producto?')) {
       this.prductoService.deleteProducto(idproducto).subscribe(
         (respuesta) => {
           console.log('Categoría eliminada exitosamente', respuesta);

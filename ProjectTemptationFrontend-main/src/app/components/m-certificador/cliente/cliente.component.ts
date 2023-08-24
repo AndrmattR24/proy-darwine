@@ -51,21 +51,21 @@ export class ClienteComponent {
         this.getCliente();
       },
       (error) => {
-        console.error('Error al crear la categoría', error);
+        console.error('Error al crear cliente', error);
         this.getCliente();
       }
     );
   }
 
   eliminarCliente(idcliente: number): void {
-    if (confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {
+    if (confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
       this.clienteService.deleteCliente(idcliente).subscribe(
         (respuesta) => {
-          console.log('Categoría eliminada exitosamente', respuesta);
+          console.log('cliente eliminada exitosamente', respuesta);
           this.getCliente();
         },
         (error) => {
-          console.error('Error al eliminar la categoría', error);
+          console.error('Error al eliminar la cliente', error);
           this.getCliente();
         }
       );

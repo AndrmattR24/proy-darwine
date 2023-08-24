@@ -21,17 +21,22 @@ export class ClienteService {
 
   }
 
- 
-  getCliente(): Observable<ICategoria[]> {
-    return this.http.get<ICategoria[]>(`${this.apiUrl}`);
+
+  getCliente(): Observable<ICliente[]> {
+    return this.http.get<ICliente[]>(`${this.apiUrl}`);
   }
   createCliente(cliente: ICliente): Observable<any> {
     return this.http.post<any>(this.apiUrl, cliente);
   }
-  
-  
+
+
   deleteCliente(id: number): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<any>(url);
+  }
+
+  updateCliente(id: number, cliente: ICliente): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<any>(url, cliente);
   }
 }

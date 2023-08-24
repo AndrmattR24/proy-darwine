@@ -22,7 +22,7 @@ export class ProductoService {
 
   }
 
- 
+
   getProducto(): Observable<IProducto[]> {
     return this.http.get<IProducto[]>(`${this.apiUrl}`);
   }
@@ -30,11 +30,16 @@ export class ProductoService {
   createProducto(producto: IProducto): Observable<any> {
     return this.http.post<any>(this.apiUrl, producto);
   }
-  
-  
+
+
   deleteProducto(id: number): Observable<any> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<any>(url);
   }
-  
+
+  updateProducto(id: number, producto: IProducto): Observable<any> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<any>(url, producto);
+  }
+
 }

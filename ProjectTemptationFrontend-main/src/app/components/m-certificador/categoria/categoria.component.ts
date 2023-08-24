@@ -54,9 +54,9 @@ export class CategoriaComponent {
 
 
 
-  eliminarCategoria(idCategoria: number): void {
+  eliminarCategoria(idcategoria: number): void {
     if (confirm('¿Estás seguro de que deseas eliminar esta categoría?')) {
-      this.categoriaService.deleteCategoria(idCategoria).subscribe(
+      this.categoriaService.deleteCategoria(idcategoria).subscribe(
         (respuesta) => {
           console.log('Categoría eliminada exitosamente', respuesta);
           this.getCategorias();
@@ -64,10 +64,9 @@ export class CategoriaComponent {
         (error) => {
           console.error('Error al eliminar la categoría', error);
           this.getCategorias();
-
         }
       );
     }
   }
-  
+
 }
