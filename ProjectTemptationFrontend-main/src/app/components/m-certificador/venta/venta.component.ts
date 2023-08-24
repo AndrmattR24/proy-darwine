@@ -68,10 +68,10 @@ export class VentaComponent {
           totalProducto: 0,
           total: 0,
           contacto: '',
-          idLocalidad: '',
+          idLocalidad: 'LIM',
           telefono: '',
           direccion: '',
-          idTransaccion: '',
+
           fechaVenta: new Date().toISOString(),
         };
         this.getVentas();
@@ -91,7 +91,7 @@ export class VentaComponent {
           this.getVentas();
         },
         (error) => {
-          console.error('venta al eliminar la categoría', error);
+          console.error('venta al eliminar la venta', error);
           this.getVentas();
         }
       );
