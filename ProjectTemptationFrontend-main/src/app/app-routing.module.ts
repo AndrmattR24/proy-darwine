@@ -8,16 +8,18 @@ import { UsuarioComponent } from './components/m-certificador/usuario/usuario.co
 import { VentaComponent } from './components/m-certificador/venta/venta.component';
 import { LoginComponent } from './components/m-certificador/login/login.component';
 import { RegistoComponent } from './components/m-certificador/registo/registo.component';
+import {canActivate, redirectUnauthorizedTo} from '@angular/fire/auth-guard'
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'registro'},
-  { path: 'categoriaGet', component: CategoriaComponent },
-  { path: 'clienteGet', component: ClienteComponent },
-  { path: 'productoGet', component: ProductoComponent },
-  { path: 'usuariosGet', component: UsuarioComponent },
-  { path: 'ventasGet', component: VentaComponent },
+  { path: 'categoriaGet', component: CategoriaComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
+  { path: 'clienteGet', component: ClienteComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
+  { path: 'productoGet', component: ProductoComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
+  { path: 'usuariosGet', component: UsuarioComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
+  { path: 'ventasGet', component: VentaComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
   {path: 'login', component: LoginComponent},
-  {path: 'registro', component: RegistoComponent}
+  {path: 'registro', component: RegistoComponent},
+
 
 
 ];

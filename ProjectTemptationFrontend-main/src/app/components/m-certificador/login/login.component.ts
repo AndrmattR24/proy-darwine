@@ -34,4 +34,8 @@ export class LoginComponent {
     })
     .catch(error=>console.log(error))
   }
+
+  irRegistro(){
+    this.router.navigate(['registro'])
+  }
 }

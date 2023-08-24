@@ -27,4 +27,8 @@ export class RegistoComponent {
     .catch(error => console.log(error));
 
   }
+
+  irLogin(){
+    this.router.navigate(['login'])
+  }
 }
