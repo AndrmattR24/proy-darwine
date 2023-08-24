@@ -21,6 +21,9 @@ import { CategoriaComponent } from './components/m-certificador/categoria/catego
 import { ClienteComponent } from './components/m-certificador/cliente/cliente.component';
 import { ProductoComponent } from './components/m-certificador/producto/producto.component';
 import { VentaComponent } from './components/m-certificador/venta/venta.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,7 @@ import { VentaComponent } from './components/m-certificador/venta/venta.componen
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }), // ToastrModule added
-    ReactiveFormsModule,
+    ReactiveFormsModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()),
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

@@ -3,6 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  firebase: {
+    projectId: 'crudfirebase-23',
+    appId: '1:36933908871:web:9e432cb4ecc0172bdbfb22',
+    databaseURL: 'https://crudfirebase-23-default-rtdb.firebaseio.com',
+    storageBucket: 'crudfirebase-23.appspot.com',
+    apiKey: 'AIzaSyDDnJCdt7LDBXUrhWVEuy7aTyWktXJY2sc',
+    authDomain: 'crudfirebase-23.firebaseapp.com',
+    messagingSenderId: '36933908871',
+  },
   production: false,
   // endpoint: 'https://intranet.grupotawa.com/incentivosrom/',
   endpoint: 'https://localhost:7117/',
