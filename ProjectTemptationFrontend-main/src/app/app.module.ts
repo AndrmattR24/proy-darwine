@@ -24,6 +24,8 @@ import { VentaComponent } from './components/m-certificador/venta/venta.componen
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+import { RegistoComponent } from './components/m-certificador/registo/registo.component';
+import { LoginComponent } from './components/m-certificador/login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     ClienteComponent,
     ProductoComponent,
     VentaComponent,
+    RegistoComponent,
+    LoginComponent,
     
   ],
   imports: [
